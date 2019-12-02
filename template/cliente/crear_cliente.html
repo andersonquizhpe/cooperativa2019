@@ -1,0 +1,43 @@
+{% extends 'principal.html' %}
+{% block content %}
+
+<h2 class="display-4">Registro de cliente</h2>
+<!--top ten vulnerabilidades 
+OWASP -->
+
+<form method="POST">{% csrf_token %}
+    <div>
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Cliente</a></li> 
+            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Cuenta</a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <br>
+        <div class="form-group">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">
+                    {% for field in f%}
+                    <div class="form-group">
+                        {{ field.label_tag }} {{field}}
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+                <div role="tabpanel" class="tab-pane" id="profile">
+                        {% for field in fc%}
+                        <div class="form-group">
+                            {{ field.label_tag }} {{field}}
+                        </div>
+                        {% endfor %}
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+
+
+</form>
+
+{% endblock %}

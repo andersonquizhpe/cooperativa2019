@@ -1,0 +1,23 @@
+{% extends 'principal.html' %}
+{% block content %}
+{% load static %}
+
+
+<div class="content">
+
+    <h2 class="modal-title" style="text-align: center;">Inicie Sesion</h2>
+    <div class="avatar">
+        <img src="{% static 'img/avatar.png' %}" alt="Avatar">
+    </div>
+    <div class="modal-body">
+        <form method="post">{% csrf_token %}
+            {{formulario}}
+            <br>
+            <div class="form-group contenedor ">
+                <button type="submit" class="btn btn-primary">Ingresar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

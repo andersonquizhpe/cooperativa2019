@@ -1,0 +1,12 @@
+{% extends 'principal.html' %}
+{% block content %}
+
+<h2 class="display-4"> Modificar Cliente</h2>
+
+<form method="POST">{% csrf_token %}
+    {{form.as_p}}
+    <button class="btn btn-primary" type="submit">Modificar</button>
+    <button class="btn btn-danger" type="submit">Delete</button>
+</form>
+
+{% endblock %}

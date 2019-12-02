@@ -1,0 +1,34 @@
+{% extends 'principal.html' %}
+
+{% block content %}
+
+<h1 style="text-align: center;">Lista de Cuentas de {{cliente.nombres}} {{cliente.apellidos}}</h1>
+<a href="crear_cuenta" style="text-decoration:none" class="btn btn-primary">Nuevo Cuenta</a>
+<br>
+
+<table class="table" id="tabla">
+    <thead class="thead-light">
+        <tr>
+            <th>Numero</th>
+            <th>Tipo</th>
+            <th>Saldo</th>
+            <th>Estado</th>
+            <th>Depósito</th>
+            <th>Retiro</th>
+        </tr>
+    </thead>
+    {% for c in lista%}
+    <tbody>
+        <tr>
+            <td>{{c.numero}}</td>
+            <td>{{c.tipoCuenta}}</td>
+            <td>{{c.saldo}}</td>
+            <td>{{c.estado}}</td>
+            <td><a href="{% url 'deposito' numero=c.numero %}">Depósito</a></td>
+            <td><a href="{% url 'retiro' numero=c.numero %}">Retiro</a></td>
+        </tr>
+    </tbody>
+    {% endfor %}
+</table>
+
+{% endblock %}

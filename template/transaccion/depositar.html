@@ -1,0 +1,21 @@
+
+{% extends 'principal.html' %}
+{% block content %}
+
+
+<h2 class="display-4">Nueva Transaccion</h2>
+<br>
+Cliente: {{cliente.nombres}} {{cliente.apellidos}} <br>
+Numero de Cuenta: {{cuenta.numero}} <br>
+Saldo: {{cuenta.saldo}}
+<form method="POST"> {% csrf_token %}
+    {% for field in formulario%}
+    <div class="form-group">
+        {{ field.label_tag }} {{field}}
+    </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+
+
+{% endblock %}
