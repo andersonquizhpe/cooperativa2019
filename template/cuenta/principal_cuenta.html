@@ -3,7 +3,7 @@
 {% block content %}
 
 <h1 style="text-align: center;">Lista de Cuentas de {{cliente.nombres}} {{cliente.apellidos}}</h1>
-<a href="crear_cuenta" style="text-decoration:none" class="btn btn-primary">Nuevo Cuenta</a>
+<a href="{% url 'crear' %}" style="text-decoration:none" class="btn btn-primary">Nuevo Cuenta</a>
 <br>
 
 <table class="table" id="tabla">

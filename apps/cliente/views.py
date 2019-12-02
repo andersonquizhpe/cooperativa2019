@@ -171,4 +171,25 @@ def retirar(request, numero):
     }
     return render(request, 'transaccion/depositar.html', context)
 
-    
+@login_required
+def crearCuenta(request):
+    formularioCuenta = FormularioCuenta(request.POST)
+    if request.method == 'POST':
+        if  formularioCuenta.is_valid():
+            #obteniendo todos los datos del formulario Cliente
+            datosCuenta = formularioCuenta.cleaned_data #----
+            #creacion de objetos
+            cuenta = Cuenta()
+            cuenta.numero=datosCuenta.get('numero')
+            cuenta.estado=True
+            cuenta.saldo=datosCuenta.get('saldo')
+            cuenta.tipoCuenta = datosCuenta.get('tipoCuenta')
+            #cuenta.cliente = cliente
+            cuenta.save()
+            return redirect(principal)
+    #diccionarios
+    context = {
+        'fc': formularioCuenta,
+        'title': 'COOPERATIVA QUINTO',
+    }
+    return render (request, 'cuenta/nuevaCuenta.html', context)
