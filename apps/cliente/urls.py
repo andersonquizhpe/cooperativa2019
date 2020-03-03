@@ -11,6 +11,8 @@ urlpatterns = [
     path(r'^deposito/(?P<numero>d+)/$', views.depositar, name='deposito'),
     path(r'^retiro/(?P<numero>d+)/$', views.retirar, name='retiro'),
     path('crear_cuenta/(?P<cedula>d+)/$', views.crearCuenta, name='crear'),
+    path('delete/(?P<cedula>d+)/$', views.eliminar, name='delete'),
+    
 ]
 
 #$ fin de url o definir .. 

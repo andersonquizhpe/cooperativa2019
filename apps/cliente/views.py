@@ -195,3 +195,11 @@ def crearCuenta(request, cedula):
         'title': 'COOPERATIVA QUINTO',
     }
     return render (request, 'cuenta/nuevaCuenta.html', context)
+
+@login_required
+def eliminar(request, cedula):
+    cliente = Cliente.objects.get(cedula=cedula)
+    cliente.delete()
+
+    # Después redireccionamos de nuevo a la lista
+    return redirect('/cliente')

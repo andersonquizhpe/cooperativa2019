@@ -6,29 +6,38 @@
 <a href="crear_cliente" style="text-decoration:none" class="btn btn-primary">Nuevo Cliente</a>
 <br>
 
-        <table class="table" id="tabla">
-                <thead class="thead-light">
-                    <tr>
-                        <th>Cedula</th>
-                        <th>Apellidos</th>
-                        <th>Nombres</th>
-                        <th>Telefono</th>
-                        <th>Celular</th>
-                        <th>Cuentas</th>
-                    </tr>
-                </thead>
-                {% for c in lista%}
-                <tbody>
-                    <tr>
-                        <td><a href="modificar?cedula={{c.cedula}}">{{c.cedula}}</a></td>
-                        <td>{{c.apellidos}}</td>
-                        <td>{{c.nombres}}</td>
-                        <td>{{c.telefono}}</td>
-                        <td>{{c.celular}}</td>
-                        <td><a class="btn btn-primary" href="cuentas_cliente?cedula={{c.cedula}}">Ver Cuentas</a></td>
-                    </tr>
-                </tbody>
-                {% endfor %}
-            </table>
+<table class="table" id="tabla">
+    <thead class="thead-light">
+        <tr>
+            <th>Cedula</th>
+            <th>Apellidos</th>
+            <th>Nombres</th>
+            <th>Telefono</th>
+            <th>Celular</th>
+            <th>Cuentas</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    {% for c in lista%}
+    <tbody>
+        <tr>
+            <td><a href="modificar?cedula={{c.cedula}}">{{c.cedula}}</a></td>
+            <td>{{c.apellidos}}</td>
+            <td>{{c.nombres}}</td>
+            <td>{{c.telefono}}</td>
+            <td>{{c.celular}}</td>
+            <td><a class="btn btn-primary" href="cuentas_cliente?cedula={{c.cedula}}">Ver Cuentas</a></td>
+            <td>
+                <button class="btn btn-danger" type="submit">
+                    <a href="{% url 'delete' cedula=c.cedula %}"
+                        onClick="return confirm('¿Seguro que quieres borrar el registro?');">
+                        Eliminar
+                    </a>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+    {% endfor %}
+</table>
 
 {% endblock %}
