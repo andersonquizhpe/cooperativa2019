@@ -172,7 +172,9 @@ def retirar(request, numero):
     return render(request, 'transaccion/depositar.html', context)
 
 @login_required
-def crearCuenta(request):
+def crearCuenta(request, cedula):
+    clientes = Cliente.objects.get(cedula=cedula)
+    cliente = Cliente.objects.get(cliente_id=clientes.cliente_id)
     formularioCuenta = FormularioCuenta(request.POST)
     if request.method == 'POST':
         if  formularioCuenta.is_valid():
@@ -184,7 +186,7 @@ def crearCuenta(request):
             cuenta.estado=True
             cuenta.saldo=datosCuenta.get('saldo')
             cuenta.tipoCuenta = datosCuenta.get('tipoCuenta')
-            #cuenta.cliente = cliente
+            cuenta.cliente = cliente
             cuenta.save()
             return redirect(principal)
     #diccionarios

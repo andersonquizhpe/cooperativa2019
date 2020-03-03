@@ -10,7 +10,7 @@ urlpatterns = [
     path('cuentas_cliente/', views.listarcuenta),
     path(r'^deposito/(?P<numero>d+)/$', views.depositar, name='deposito'),
     path(r'^retiro/(?P<numero>d+)/$', views.retirar, name='retiro'),
-    path('crear_cuenta/', views.crearCuenta, name='crear'),
+    path('crear_cuenta/(?P<cedula>d+)/$', views.crearCuenta, name='crear'),
 ]
 
 #$ fin de url o definir .. 
